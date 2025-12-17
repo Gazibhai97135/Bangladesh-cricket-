@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Registration - Bangladesh Cricket League</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="registration-container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-cricket"></i>
+                <h1>Bangladesh Cricket League</h1>
+            </div>
+            <p>Player Registration System</p>
+        </header>
+
+        <div class="form-container">
+            <div class="form-side">
+                <form id="playerRegistrationForm">
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> Player Information</h3>
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <label>Full Name *</label>
+                                <input type="text" id="fullName" required>
+                            </div>
+                            <div class="input-group">
+                                <label>CricClubs ID *</label>
+                                <input type="text" id="cricClubsID" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Birthplace *</label>
+                                <input type="text" id="birthplace" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Mobile Number *</label>
+                                <input type="tel" id="mobile" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Email Address *</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Preferred Role *</label>
+                                <select id="preferredRole" required>
+                                    <option value="">Select Role</option>
+                                    <option value="Batsman">Batsman</option>
+                                    <option value="Bowler">Bowler</option>
+                                    <option value="All-Rounder">All-Rounder</option>
+                                    <option value="Wicketkeeper">Wicketkeeper</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label>Batting Style *</label>
+                                <select id="battingStyle" required>
+                                    <option value="">Select Style</option>
+                                    <option value="Right-handed">Right-handed</option>
+                                    <option value="Left-handed">Left-handed</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label>Bowling Style</label>
+                                <select id="bowlingStyle">
+                                    <option value="">Select Style</option>
+                                    <option value="Right-arm fast">Right-arm fast</option>
+                                    <option value="Right-arm medium">Right-arm medium</option>
+                                    <option value="Left-arm fast">Left-arm fast</option>
+                                    <option value="Left-arm medium">Left-arm medium</option>
+                                    <option value="Off spin">Off spin</option>
+                                    <option value="Leg spin">Leg spin</option>
+                                    <option value="Does not bowl">Does not bowl</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bank Details -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-university"></i> Bank Details</h3>
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <label>Bank Name *</label>
+                                <input type="text" id="bankName" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Account Holder Name *</label>
+                                <input type="text" id="accountHolder" required>
+                            </div>
+                            <div class="input-group">
+                                <label>BSB Number *</label>
+                                <input type="text" id="bsb" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Account Number *</label>
+                                <input type="text" id="accountNumber" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Photo Upload -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-camera"></i> Player Photo *</h3>
+                        <div class="photo-upload" id="uploadArea">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <p>Click to upload player photo</p>
+                            <p style="font-size: 14px; color: #666;">Max size: 2MB | Format: JPG, PNG</p>
+                            <input type="file" id="playerPhoto" accept="image/*" hidden required>
+                        </div>
+                        <div class="preview" id="preview"></div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Submit Registration
+                    </button>
+                </form>
+
+                <!-- Status Check -->
+                <div class="status-check">
+                    <h3><i class="fas fa-search"></i> Check Registration Status</h3>
+                    <div class="check-form">
+                        <input type="text" id="checkID" placeholder="Enter your BCL ID">
+                        <button onclick="checkStatus()">Check</button>
+                    </div>
+                    <div id="statusResult"></div>
+                </div>
+            </div>
+
+            <div class="info-side">
+                <div class="info-card">
+                    <h4><i class="fas fa-info-circle"></i> Important Notes</h4>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> All fields are required</li>
+                        <li><i class="fas fa-check"></i> ID will be generated after submission</li>
+                        <li><i class="fas fa-check"></i> Photo must be clear and professional</li>
+                        <li><i class="fas fa-check"></i> Bank details for payment purposes</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h4><i class="fas fa-id-card"></i> BCL Player ID</h4>
+                    <p>Your BCL Player ID (e.g., BCL-000001) will be generated after successful registration.</p>
+                    <p>Keep this ID safe for future reference and status checks.</p>
+                </div>
+
+                <div class="info-card">
+                    <h4><i class="fas fa-shield-alt"></i> Security & Privacy</h4>
+                    <p>Your information is protected with bank-level security. We never share your personal data with third parties.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    
+    <!-- Registration JS -->
+    <script src="assets/js/registration.js"></script>
+</body>
+  </html>
